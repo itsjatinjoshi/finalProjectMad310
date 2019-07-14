@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 public class Splash extends AppCompatActivity {
     ImageView Welcome_Logo;
+    
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
