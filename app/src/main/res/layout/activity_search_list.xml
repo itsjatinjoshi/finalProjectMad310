@@ -12,12 +12,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/btnResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button" />
+
+    <ListView
+        android:id="@+id/lst_products"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>
