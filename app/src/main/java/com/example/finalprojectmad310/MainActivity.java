@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         item.getItemId();
         Toast.makeText(this, "Search List", Toast.LENGTH_SHORT).show();
-        // startActivity(new Intent(this, SearchList.class));
+        startActivity(new Intent(this, searchList.class));
 
         return super.onOptionsItemSelected(item);
     }
@@ -56,10 +56,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getSupportActionBar();
-
-
-
-
         getSupportActionBar().setTitle("Menu List");
         actionBar.setSubtitle("Please select from menu");
         //  actionBar.setLogo(R.drawable.logomenu);
