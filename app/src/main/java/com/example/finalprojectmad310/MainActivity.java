@@ -14,11 +14,6 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.apidemo_listview.Asycdata;
-import com.example.apidemo_listview.Mylistadapter;
-import com.example.apidemo_listview.Products;
-import com.example.apidemo_listview.ProductsDesc;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,29 +26,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     ListView lsp;
+    Mylistadapter adapt;
 
-
-    com.example.apidemo_listview.Mylistadapter adapt;
-
-
-    ArrayList<com.example.apidemo_listview.Products> pro;
+    ArrayList<Products> pro;
 
 
     @Override
 
-        public boolean onCreateOptionsMenu(Menu menu) {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.main, menu);
-            return super.onCreateOptionsMenu(menu);
-      //  ImageView search =(ImageView) findViewById(R.menu.main);
-            }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+        //  ImageView search =(ImageView) findViewById(R.menu.main);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         item.getItemId();
         Toast.makeText(this, "Search List", Toast.LENGTH_SHORT).show();
-       // startActivity(new Intent(this, SearchList.class));
+        // startActivity(new Intent(this, SearchList.class));
 
         return super.onOptionsItemSelected(item);
     }
@@ -70,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Menu List");
         actionBar.setSubtitle("Please select from menu");
-      //  actionBar.setLogo(R.drawable.logomenu);
+        //  actionBar.setLogo(R.drawable.logomenu);
 
 
 
@@ -107,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
 
                 pro.add(new Products(pimg,pimg1,name,brand,desc,price));
 
-               // System.out.println("Bag Names :"+childobj.getString("title"));
+                // System.out.println("Bag Names :"+childobj.getString("title"));
             }
 
 
@@ -125,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this,pro.get(position).getPname(),Toast.LENGTH_LONG).show();
 
 
-                    Intent i = new Intent(MainActivity.this, ProductsDesc.class);
+                    Intent i = new Intent(MainActivity.this,ProductsDesc.class);
                     i.putExtra("data",pro.get(position));
                     startActivity(i);
 
