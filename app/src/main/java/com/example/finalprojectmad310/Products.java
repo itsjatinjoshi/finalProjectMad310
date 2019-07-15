@@ -5,10 +5,18 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Products implements Parcelable {
-    String pimg, pimg1, pname,brand,desc;
-    long  price;
 
-    public Products(String pimg, String pimg1, String pname, String brand, String desc, long price) {
+    String pimg, pimg1, pname,brand,desc, price;
+
+    protected Products(Parcel in) {
+        pimg = in.readString();
+        pimg1 = in.readString();
+        pname = in.readString();
+        brand = in.readString();
+        desc = in.readString();
+        price = in.readString();
+    }
+    public Products(String pimg, String pimg1, String pname, String brand, String desc, String price) {
         this.pimg = pimg;
         this.pimg1 = pimg1;
         this.pname = pname;
@@ -17,19 +25,8 @@ public class Products implements Parcelable {
         this.price = price;
     }
 
-    public Products(String pimg1, String name, String pimg, String pname, long price) {
-        this.pimg = pimg;
+    public Products(String pname) {
         this.pname = pname;
-    }
-
-
-    protected Products(Parcel in) {
-        pimg =  in.readString();
-        pimg1=  in.readString();
-        pname = in.readString();
-        brand = in.readString();
-        desc =  in.readString();
-        price = in.readLong();
     }
 
     public static final Creator<Products> CREATOR = new Creator<Products>() {
@@ -43,6 +40,35 @@ public class Products implements Parcelable {
             return new Products[size];
         }
     };
+    public Products(String pimg1, String name, String pimg, String pname, long price) {
+        this.pimg = pimg;
+        this.pname = pname;
+    }
+
+
+    public String getPimg() {
+        return pimg;
+    }
+
+    public void setPimg(String pimg) {
+        this.pimg = pimg;
+    }
+
+    public String getPimg1() {
+        return pimg1;
+    }
+
+    public void setPimg1(String pimg1) {
+        this.pimg1 = pimg1;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
 
     public String getBrand() {
         return brand;
@@ -60,34 +86,12 @@ public class Products implements Parcelable {
         this.desc = desc;
     }
 
-    public long getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(String price) {
         this.price = price;
-    }
-
-    public String getPimg() {
-        return pimg;
-    }
-    public String getPimg1() {
-        return pimg1;
-    }
-
-    public void setPimg(String pimg) {
-        this.pimg = pimg;
-    }
-    public void setPimg1(String pimg1) {
-        this.pimg1 = pimg1;
-    }
-
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
     }
 
     @Override
@@ -96,12 +100,14 @@ public class Products implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(pimg);
-        dest.writeString(pimg1);
-        dest.writeString(pname);
-        dest.writeString(brand);
-        dest.writeString(desc);
-        dest.writeLong(price);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(pimg);
+        parcel.writeString(pimg1);
+        parcel.writeString(pname);
+        parcel.writeString(brand);
+        parcel.writeString(desc);
+        parcel.writeString(price);
     }
+
+
 }

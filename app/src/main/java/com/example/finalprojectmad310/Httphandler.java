@@ -11,7 +11,11 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class Httphandler {
+public class Httphandler
+
+{
+
+    private String key = "Token token=68cc5249e9a4694309bcbf3301073797";
     public Httphandler() {
     }
 
@@ -26,6 +30,7 @@ public class Httphandler {
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setRequestProperty("Content-Type","application/json");
+            con.setRequestProperty("Authorization",key);
 
             //Read response
             InputStream in = new BufferedInputStream(con.getInputStream());

@@ -39,7 +39,7 @@ public class ProductsDesc extends AppCompatActivity {
         pname.setText(p.getPname());
         pdesc.setText(p.getDesc());
         pbrand.setText(p.getBrand());
-        price.setText("$"+p.getPrice());
+        price.setText(p.getPrice());
 
     }
 }

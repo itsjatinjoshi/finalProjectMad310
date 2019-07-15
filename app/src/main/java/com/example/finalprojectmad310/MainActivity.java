@@ -40,60 +40,96 @@ public class MainActivity extends AppCompatActivity {
         //  ImageView search =(ImageView) findViewById(R.menu.main);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        item.getItemId();
-        Toast.makeText(this, "Search List", Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(this, searchList.class));
-
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        String link = "https://www.foodrepo.org/api/v3/products/";
+
 
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setTitle("Menu List");
         actionBar.setSubtitle("Please select from menu");
         //  actionBar.setLogo(R.drawable.logomenu);
 
-
-
-
-
         lsp = findViewById(R.id.lst_products);
-
-
-        String ls = getResources().getString(R.string.link);
 
         pro = new ArrayList<>();
 
         try {
-            String mysts = new Asycdata().execute(ls).get();
+            String mysts = new Asycdata().execute(link).get();
 
-            System.out.println("This is from MainActivity :"+mysts);
+           // System.out.println("This is from MainActivity :"+mysts);
 
 
             JSONObject mainobj = new JSONObject(mysts);
 
-            JSONArray proarray = mainobj.getJSONArray("products");
+            JSONArray proarray = mainobj.getJSONArray("data");
 
             for(int i =0;i<proarray.length();i++)
             {
                 JSONObject childobj = proarray.getJSONObject(i);
+                JSONObject nameobj = childobj.getJSONObject("display_name_translations");
 
-                String name = childobj.getString("title");
-                String pimg = childobj.getString("imageFront");
-                String pimg1 = childobj.getString("imageBack");
-                String desc = childobj.getString("description");
-                String brand = childobj.getString("brand");
-                long price = childobj.getLong("price");
+                String name = nameobj.getString("en");
+
+                /*String id = childobj.getString("id");
+                String pimg = childobj.getString("country");
+                String pimg1 = childobj.getString("name_translations");
+                String desc = childobj.getString("images");
+                String brand = childobj.getString("unit");
+                String price=childobj.getString("quantity");
+*/
+
+                JSONArray imgs = childobj.getJSONArray("images");
+
+                for(int j=0;j<imgs.length();j++)
+                {
+                    JSONObject imgobj = imgs.getJSONObject(j);
 
 
-                pro.add(new Products(pimg,pimg1,name,brand,desc,price));
+
+                    JSONArray cate = imgobj.getJSONArray("categories");
+
+                    for (int z=0;z<cate.length();z++)
+                    {
+                        String cnm = cate.getString(z);
+
+
+                        //System.out.println("CNM :"+cnm);
+
+                        if(cnm.equals("Front")){
+                            String lk = imgobj.getString("medium");
+                            System.out.println("Front Found!");
+                            System.out.println("Images :"+lk);
+                        }
+                        else if(cnm.equals("Back")){
+                            String lk = imgobj.getString("medium");
+                            System.out.println("Back Found!");
+                            System.out.println("Images :"+lk);
+                        }
+
+
+
+                    }
+
+
+
+
+
+
+
+                }
+
+
+               // pro.add(new Products(name));
+
+               // System.out.println("Product name" + name);
+
+
+
+              //  pro.add(new Products(pimg,pimg1,name,brand,desc,price));
 
                 // System.out.println("Bag Names :"+childobj.getString("title"));
             }
