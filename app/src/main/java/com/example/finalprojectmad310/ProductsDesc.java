@@ -1,6 +1,7 @@
 package com.example.finalprojectmad310;
 
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
@@ -18,6 +19,10 @@ public class ProductsDesc extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_desc);
+
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setTitle("Food Detail");
+        actionBar.setSubtitle("All Details you can find here");
 
         ivFoodImage = findViewById(R.id.ivFoodImage);
         tvFoodName= findViewById(R.id.tvFoodName);

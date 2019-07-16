@@ -2,6 +2,7 @@ package com.example.finalprojectmad310;
 
 import android.content.Intent;
 import android.os.Handler;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.animation.Animation;
@@ -16,6 +17,9 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setTitle("Welcome to Food NutrI");
+        actionBar.setSubtitle("You can search best food here");
 
         Welcome_Logo= findViewById(R.id.Welcome_Logo);
 
