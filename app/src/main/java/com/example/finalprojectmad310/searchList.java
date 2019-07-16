@@ -27,37 +27,35 @@ public class searchList extends AppCompatActivity {
 
     ArrayList<Products> pro;
 
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater=getMenuInflater();
-        inflater.inflate(R.menu.main,menu);
-        MenuItem item=menu.findItem(R.id.search_bar);
-        SearchView searchView=(SearchView)item.getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-         //   adapt.getFilter().filter(s);
-                return false;
-            }
-        });
-
-
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
+        //  ImageView search =(ImageView) findViewById(R.menu.main);
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        item.getItemId();
+        Toast.makeText(this, "Search List", Toast.LENGTH_SHORT).show();
+        // startActivity(new Intent(this, SearchList.class));
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_list);
-        ActionBar actionBar = getSupportActionBar();
-        getSupportActionBar().setTitle("Search here");
-        actionBar.setSubtitle("Please enter you want");
         String link = "https://www.foodrepo.org/api/v3/products/";
+
+
+        ActionBar actionBar = getSupportActionBar();
+        getSupportActionBar().setTitle("Search List");
+        actionBar.setSubtitle("Please type here");
+        //  actionBar.setLogo(R.drawable.logomenu);
 
         lsp = findViewById(R.id.lst_products);
 
@@ -139,8 +137,6 @@ public class searchList extends AppCompatActivity {
             adapt = new Mylistadapter(searchList.this,pro);
             //  adapt = new Mylistadapter(pro, MainActivity.this);
 
-
-
             lsp.setAdapter(adapt);
 
 
@@ -164,7 +160,6 @@ public class searchList extends AppCompatActivity {
 
 
 
-
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
@@ -172,7 +167,5 @@ public class searchList extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 }

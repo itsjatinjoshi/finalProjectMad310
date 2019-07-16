@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         item.getItemId();
         startActivity(new Intent(MainActivity.this, searchList.class));
-
+//startActivity();
         return super.onOptionsItemSelected(item);
     }
 

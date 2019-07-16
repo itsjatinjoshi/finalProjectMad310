@@ -25,12 +25,12 @@ public class Splash extends AppCompatActivity {
 
 
         Animation ani = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate);
-        ani.setDuration(5000);
+        ani.setDuration(3000);
 
         Welcome_Logo.setAnimation(ani);
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.rotate);
-        animation.setDuration(5000);
+        animation.setDuration(3000);
         Welcome_Logo.setAnimation(animation);
 
 
