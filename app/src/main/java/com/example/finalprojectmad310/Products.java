@@ -5,7 +5,6 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class Products implements Parcelable {
     String foodId;
@@ -15,7 +14,7 @@ public class Products implements Parcelable {
     String foodQuantity;
     String imgs;
 
-    public Products(String foodId, String foodCountry, String foodName, String foodUnit, String foodQuantity, String imgs) {
+    public Products(String foodId, String foodCountry, String foodName, String foodUnit, String foodQuantity) {
         this.foodId = foodId;
         this.foodCountry = foodCountry;
         this.foodName = foodName;
@@ -102,9 +101,9 @@ public class Products implements Parcelable {
         return 0;
     }
 
-    public Products(String foodId, String foodCountry, JSONObject name, String foodUnit, String foodName, String imgs, JSONArray jsonArray) {
-        this.foodName = foodName;
-        this.imgs = imgs;
+    public Products(String id, String foodCountry, String foodName, String foodUnit, String foodId, JSONArray imgs) {
+        this.foodName = this.foodName;
+        this.imgs = this.imgs;
     }
 
     @Override

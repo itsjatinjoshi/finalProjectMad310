@@ -27,7 +27,7 @@ public class Mylistadapter extends BaseAdapter {
             this.pro = pro;
         }
 
-        public Mylistadapter() {
+        public Mylistadapter(ArrayList<Products> pro, MainActivity mainActivity) {
         }
 
         @Override
@@ -65,12 +65,11 @@ public class Mylistadapter extends BaseAdapter {
             }
 
 
-            ImageView pimg = convertView.findViewById(R.id.img_products);
-            TextView  pname = convertView.findViewById(R.id.txt_pname);
+            ImageView imgs = convertView.findViewById(R.id.ivImgs);
+            TextView  foodName = convertView.findViewById(R.id.tvContent);
 
-            Picasso.get().load(pro.get(position).getImgs()).into(pimg);
-
-            pname.setText(pro.get(position).getFoodName());
+            Picasso.get().load(pro.get(position).getImgs()).into(imgs);
+            foodName.setText(pro.get(position).getFoodName());
 
             return convertView;
     }

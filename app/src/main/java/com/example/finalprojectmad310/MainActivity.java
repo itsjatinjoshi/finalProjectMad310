@@ -69,22 +69,31 @@ public class MainActivity extends AppCompatActivity {
 
             for(int i =0;i<proarray.length();i++)
             {
-                JSONObject childobj = proarray.getJSONObject(i);
-                String foodName = childobj.getJSONObject("display_name_translations").getString("en");
-               // String foodId = childobj.getString("id");
-              //  String foodCountry = childobj.getString("country");
-            //  String foodName = childobj.getString("name_translations");
-                //String desc = childobj.getString("images");
-              //  String foodUnit = childobj.getString("unit");
-              //  String foodQuantity=childobj.getString("quantity");
-                //String des = childobj.getString("description");
-              //  String imgs= childobj.getJSONObject("images").getJSONObject("categories")
-                    // .getJSONObject("Front").getString("medium");
-             System.out.println("foodname" + foodName);
+               JSONObject childobj = proarray.getJSONObject(i);
+               String foodName = childobj.getJSONObject("name_translations").getString("fr");
+              System.out.println("foodname" + foodName);
+                String foodId = childobj.getString("id");
+              //  System.out.println("foodId" + foodId);
+                String foodCountry = childobj.getString("country");
+              // System.out.println("foodCountry" + foodCountry);
+               //String foodName = childobj.getString("name_translations");
+              // String desc = childobj.getString("images");
+               String foodUnit = childobj.getString("unit");
+              //  System.out.println("foodUnit" + foodUnit);
+               String foodQuantity=childobj.getString("quantity");
 
-                /*   JSONArray imgs = childobj.getJSONArray("images");
+               // System.out.println("foodQuantity" + foodQuantity);
 
-                for(int j=0;j<imgs.length();j++)
+              // String des = childobj.getString("description");
+              //  System.out.println("des" + des);
+               //String imgs= childobj.getJSONObject("images").getJSONObject("categories")
+                 //    .getJSONObject("Front").getString("medium");
+            //  System.out.println("imgs" + imgs);
+
+
+               /* JSONArray imgs = childobj.getJSONArray("images");
+
+                for(int j=0;j<5*//*imgs.length()*//*;j++)
                 {
                     JSONObject imgobj = imgs.getJSONObject(j);
                     JSONArray cate = imgobj.getJSONArray("categories");
@@ -95,42 +104,44 @@ public class MainActivity extends AppCompatActivity {
                                 if(cnm.equals("Front")){
                             String lk = imgobj.getString("medium");
                             System.out.println("Front Found!");
-                            System.out.println("Images :"+lk);
+                           System.out.println("Images :"+lk);
                         }
                         else if(cnm.equals("Back")){
                             String lk = imgobj.getString("medium");
                             System.out.println("Back Found!");
                             System.out.println("Images :"+lk);
                         }
-}
-                    String foodImage = childobj.getString("images");
-                        }
-*/
+                       // System.out.println("imgs" + imgs);
+                     }
+                   // String foodImage = childobj.getString("images");
 
-               // pro.add(new Products(foodName));
+                        }*/
+
+           // pro.add(new Products("foodname" +foodId));
+
 
               //  System.out.println("Product name" + foodName);
-
-
-
-               // pro.add(new Products(foodId,foodCountry,foodName,foodUnit,foodQuantity,
-                       // imgs));
+            pro.add(new Products(foodId,foodCountry,foodName,foodUnit,foodQuantity));
 
             }
 
 
             System.out.println("Array list size :"+pro.size());
 
-            adapt = new Mylistadapter(MainActivity.this,pro);
+           adapt = new Mylistadapter(MainActivity.this,pro);
+          //  adapt = new Mylistadapter(pro, MainActivity.this);
 
             lsp.setAdapter(adapt);
+
+
 
 
 
             lsp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(MainActivity.this,pro.get(position).getFoodName(),Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this,pro.get(position).getFoodName(),
+                            Toast.LENGTH_LONG).show();
 
 
                     Intent i = new Intent(MainActivity.this,ProductsDesc.class);
