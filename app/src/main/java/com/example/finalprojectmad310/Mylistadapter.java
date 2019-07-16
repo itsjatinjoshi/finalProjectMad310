@@ -69,6 +69,7 @@ public class Mylistadapter extends BaseAdapter {
             TextView  foodName = convertView.findViewById(R.id.tvContent);
 
             Picasso.get().load(pro.get(position).getImgs()).into(imgs);
+            //Picasso.get().load("https://d2v5oodgkvnw88.cloudfront.net/uploads_production/image/data/46048/medium_7617027101578.jpg?v=1511183005").into(imgs);
             foodName.setText(pro.get(position).getFoodName());
 
             return convertView;
