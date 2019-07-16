@@ -1,6 +1,5 @@
 package com.example.finalprojectmad310;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,34 +11,33 @@ import com.squareup.picasso.Picasso;
 public class ProductsDesc extends AppCompatActivity {
 
 
-    ImageView img, img2;
-    TextView pname,price,pbrand,pdesc;
+    ImageView ivFoodImage;
+    TextView  tvFoodName, tvFoodID, tvFoodCountry, tvFoodUnit, tvFoodQuantity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products_desc);
 
-        img = findViewById(R.id.desc_pimg);
-        img2= findViewById(R.id.desc_pimg1);
-        pname = findViewById(R.id.desc_pnames);
-        pdesc = findViewById(R.id.desc_pdesc);
-
-
-        pbrand = findViewById(R.id.desc_brand);
-        price = findViewById(R.id.desc_price);
+        ivFoodImage = findViewById(R.id.ivFoodImage);
+        tvFoodName= findViewById(R.id.tvFoodName);
+        tvFoodID = findViewById(R.id.tvFoodID);
+        tvFoodCountry = findViewById(R.id.tvFoodCountry);
+        tvFoodUnit = findViewById(R.id.tvFoodUnit);
+        tvFoodQuantity = findViewById(R.id.tvFoodQuantity);
 
         Intent i = getIntent();
 
         Products p = i.getParcelableExtra("data");
 
 
-        Picasso.get().load(p.getPimg()).into(img);
-        Picasso.get().load(p.getPimg1()).into(img2);
-        pname.setText(p.getPname());
-        pdesc.setText(p.getDesc());
-        pbrand.setText(p.getBrand());
-        price.setText(p.getPrice());
+        Picasso.get().load(p.getImgs()).into(ivFoodImage);
+
+        tvFoodName.setText(p.getFoodName());
+        tvFoodID.setText(p.getFoodId());
+        tvFoodCountry.setText(p.getFoodCountry());
+        tvFoodUnit.setText(p.getFoodUnit());
+        tvFoodQuantity.setText(p.getFoodQuantity());
 
     }
 }

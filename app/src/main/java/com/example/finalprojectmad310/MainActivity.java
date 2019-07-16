@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             String mysts = new Asycdata().execute(link).get();
 
-           // System.out.println("This is from MainActivity :"+mysts);
+            System.out.println("This is from MainActivity :"+mysts);
 
 
             JSONObject mainobj = new JSONObject(mysts);
@@ -70,36 +70,29 @@ public class MainActivity extends AppCompatActivity {
             for(int i =0;i<proarray.length();i++)
             {
                 JSONObject childobj = proarray.getJSONObject(i);
-                JSONObject nameobj = childobj.getJSONObject("display_name_translations");
+                String foodName = childobj.getJSONObject("display_name_translations").getString("en");
+               // String foodId = childobj.getString("id");
+              //  String foodCountry = childobj.getString("country");
+            //  String foodName = childobj.getString("name_translations");
+                //String desc = childobj.getString("images");
+              //  String foodUnit = childobj.getString("unit");
+              //  String foodQuantity=childobj.getString("quantity");
+                //String des = childobj.getString("description");
+              //  String imgs= childobj.getJSONObject("images").getJSONObject("categories")
+                    // .getJSONObject("Front").getString("medium");
+             System.out.println("foodname" + foodName);
 
-                String name = nameobj.getString("en");
-
-                /*String id = childobj.getString("id");
-                String pimg = childobj.getString("country");
-                String pimg1 = childobj.getString("name_translations");
-                String desc = childobj.getString("images");
-                String brand = childobj.getString("unit");
-                String price=childobj.getString("quantity");
-*/
-
-                JSONArray imgs = childobj.getJSONArray("images");
+                /*   JSONArray imgs = childobj.getJSONArray("images");
 
                 for(int j=0;j<imgs.length();j++)
                 {
                     JSONObject imgobj = imgs.getJSONObject(j);
-
-
-
                     JSONArray cate = imgobj.getJSONArray("categories");
-
                     for (int z=0;z<cate.length();z++)
                     {
                         String cnm = cate.getString(z);
-
-
                         //System.out.println("CNM :"+cnm);
-
-                        if(cnm.equals("Front")){
+                                if(cnm.equals("Front")){
                             String lk = imgobj.getString("medium");
                             System.out.println("Front Found!");
                             System.out.println("Images :"+lk);
@@ -109,29 +102,20 @@ public class MainActivity extends AppCompatActivity {
                             System.out.println("Back Found!");
                             System.out.println("Images :"+lk);
                         }
+}
+                    String foodImage = childobj.getString("images");
+                        }
+*/
+
+               // pro.add(new Products(foodName));
+
+              //  System.out.println("Product name" + foodName);
 
 
 
-                    }
+               // pro.add(new Products(foodId,foodCountry,foodName,foodUnit,foodQuantity,
+                       // imgs));
 
-
-
-
-
-
-
-                }
-
-
-               // pro.add(new Products(name));
-
-               // System.out.println("Product name" + name);
-
-
-
-              //  pro.add(new Products(pimg,pimg1,name,brand,desc,price));
-
-                // System.out.println("Bag Names :"+childobj.getString("title"));
             }
 
 
@@ -146,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
             lsp.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Toast.makeText(MainActivity.this,pro.get(position).getPname(),Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this,pro.get(position).getFoodName(),Toast.LENGTH_LONG).show();
 
 
                     Intent i = new Intent(MainActivity.this,ProductsDesc.class);

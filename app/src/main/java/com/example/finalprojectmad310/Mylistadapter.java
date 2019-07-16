@@ -68,9 +68,9 @@ public class Mylistadapter extends BaseAdapter {
             ImageView pimg = convertView.findViewById(R.id.img_products);
             TextView  pname = convertView.findViewById(R.id.txt_pname);
 
-            Picasso.get().load(pro.get(position).getPimg()).into(pimg);
+            Picasso.get().load(pro.get(position).getImgs()).into(pimg);
 
-            pname.setText(pro.get(position).getPname());
+            pname.setText(pro.get(position).getFoodName());
 
             return convertView;
     }

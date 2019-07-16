@@ -4,29 +4,35 @@ package com.example.finalprojectmad310;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Products implements Parcelable {
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-    String pimg, pimg1, pname,brand,desc, price;
+public class Products implements Parcelable {
+    String foodId;
+    String foodCountry;
+    String foodName;
+    String foodUnit;
+    String foodQuantity;
+    String imgs;
+
+    public Products(String foodId, String foodCountry, String foodName, String foodUnit, String foodQuantity, String imgs) {
+        this.foodId = foodId;
+        this.foodCountry = foodCountry;
+        this.foodName = foodName;
+        this.foodUnit = foodUnit;
+
+        this.foodQuantity = foodQuantity;
+        this.imgs = imgs;
+    }
 
     protected Products(Parcel in) {
-        pimg = in.readString();
-        pimg1 = in.readString();
-        pname = in.readString();
-        brand = in.readString();
-        desc = in.readString();
-        price = in.readString();
-    }
-    public Products(String pimg, String pimg1, String pname, String brand, String desc, String price) {
-        this.pimg = pimg;
-        this.pimg1 = pimg1;
-        this.pname = pname;
-        this.brand = brand;
-        this.desc = desc;
-        this.price = price;
-    }
+        foodId = in.readString();
+        foodCountry = in.readString();
+        foodName = in.readString();
+        foodUnit = in.readString();
 
-    public Products(String pname) {
-        this.pname = pname;
+        foodQuantity = in.readString();
+        imgs = in.readString();
     }
 
     public static final Creator<Products> CREATOR = new Creator<Products>() {
@@ -40,58 +46,55 @@ public class Products implements Parcelable {
             return new Products[size];
         }
     };
-    public Products(String pimg1, String name, String pimg, String pname, long price) {
-        this.pimg = pimg;
-        this.pname = pname;
+
+    public String getFoodId() {
+        return foodId;
+    }
+
+    public void setFoodId(String foodId) {
+        this.foodId = foodId;
+    }
+
+    public String getFoodCountry() {
+        return foodCountry;
+    }
+
+    public void setFoodCountry(String foodCountry) {
+        this.foodCountry = foodCountry;
+    }
+
+    public String getFoodName() {
+        return foodName;
+    }
+
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
+    }
+
+    public String getFoodUnit() {
+        return foodUnit;
+    }
+
+    public void setFoodUnit(String foodUnit) {
+        this.foodUnit = foodUnit;
     }
 
 
-    public String getPimg() {
-        return pimg;
+
+    public String getFoodQuantity() {
+        return foodQuantity;
     }
 
-    public void setPimg(String pimg) {
-        this.pimg = pimg;
+    public void setFoodQuantity(String foodQuantity) {
+        this.foodQuantity = foodQuantity;
     }
 
-    public String getPimg1() {
-        return pimg1;
+    public String getImgs() {
+        return imgs;
     }
 
-    public void setPimg1(String pimg1) {
-        this.pimg1 = pimg1;
-    }
-
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
-
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
-    public String getDesc() {
-        return desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public String getPrice() {
-        return price;
-    }
-
-    public void setPrice(String price) {
-        this.price = price;
+    public void setImgs(String imgs) {
+        this.imgs = imgs;
     }
 
     @Override
@@ -99,15 +102,18 @@ public class Products implements Parcelable {
         return 0;
     }
 
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(pimg);
-        parcel.writeString(pimg1);
-        parcel.writeString(pname);
-        parcel.writeString(brand);
-        parcel.writeString(desc);
-        parcel.writeString(price);
+    public Products(String foodId, String foodCountry, JSONObject name, String foodUnit, String foodName, String imgs, JSONArray jsonArray) {
+        this.foodName = foodName;
+        this.imgs = imgs;
     }
 
-
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(foodId);
+        parcel.writeString(foodCountry);
+        parcel.writeString(foodName);
+        parcel.writeString(foodUnit);
+        parcel.writeString(foodQuantity);
+        parcel.writeString(imgs);
+    }
 }
